@@ -1,0 +1,27 @@
+{
+  "workflow": {
+    "name": "Form Submission Automation",
+    "trigger": {
+      "type": "webhook",
+      "description": "Receives form submission data"
+    },
+    "steps": [
+      {
+        "step": 1,
+        "action": "Parse form data",
+        "fields": ["name", "email", "message"]
+      },
+      {
+        "step": 2,
+        "action": "Send email notification",
+        "provider": "Gmail/SMTP",
+        "template": "New submission from {name}: {message}"
+      },
+      {
+        "step": 3,
+        "action": "Log to Google Sheets",
+        "fields": ["timestamp", "name", "email", "message"]
+      }
+    ]
+  }
+}
